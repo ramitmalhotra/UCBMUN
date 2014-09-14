@@ -71,6 +71,7 @@ checkIfUsernameExists($username, $tbl_name);
 $date = getCurrentDate();
 $password = securePassword($password);
 /* create a prepared statement */
+/*
 $sql = 'INSERT INTO ' . $tbl_name . ' (
     registrationDate, 
     primaryContact, 
@@ -84,18 +85,18 @@ $sql = 'INSERT INTO ' . $tbl_name . ' (
 ) 
 VALUES (?,?,?,?,?,?,?,?,?,?,?,?)';
 if ($stmt = $mysqli->prepare($sql)) {
-    $stmt->bind_param("sssssisss", $date, $primaryName, $primaryEmail, $primaryPhone, $secondaryName, $secondaryEmail, $secondaryPhone, $university, $size, $username, $password, $address);
+    $stmt->bind_param("sssssisss", $date, $primaryName, $primaryEmail, $primaryPhone, $university, $size, $username, $password, $address);
     $stmt->execute();
     $stmt->close();
 }
 $mysqli->close();
+*/
 
-/*
-$sql = "INSERT INTO `registration`  (`registrationDate`,`id`,`primaryName`,`primaryEmail`,`primaryPhone`,`secondaryName`,`secondaryEmail`,`secondaryPhone`,`university`,`size`,`username`, `password`)
-VALUES ('$date',NULL,'$primaryName','$primaryEmail','$primaryPhone','$secondaryName','$secondaryEmail','$secondaryPhone','$university','$size','$username','$password');";
+$sql = "INSERT INTO `registration2014`  (`primaryContact`, `primaryEmail`, `primaryPhone`, `university`, `size`, `username`, `password`, `id`, `registrationDate`, `amountPaid`, `proofofpayment`, `address`)
+VALUES ('$primaryName','$primaryEmail','$primaryPhone','$university','$size','$username','$password',NULL,'$date','0','0','$address');";
 $add_member = mysql_query($sql, $connection) or trigger_error( mysql_error( $connection ), E_USER_ERROR );
 mysql_close($connection);
-*/
+
 
 // write the email content  
 $email_body = "Primary Contact: ".$primaryName.
