@@ -1,5 +1,5 @@
 <?php
-/*require_once('recaptchalib.php');
+require_once('recaptchalib.php');
 	$privatekey = '6Lf-2OYSAAAAABFzFkmP9nfLkPSAYP_nMLHGYKeC';
 	$resp = recaptcha_check_answer ($privatekey,
 	                            $_SERVER["REMOTE_ADDR"],
@@ -10,7 +10,7 @@ if (!$resp->is_valid) {
 	$error = "The CAPTCHA was not entered correctly. Please try again";
 	header("Location: registration.php?e=".urlencode($error));
 	exit;  
-} */
+} 
 session_start();
 $host="localhost"; // Host name 
 $hostname = '127.0.0.1';
@@ -71,7 +71,7 @@ checkIfUsernameExists($username, $tbl_name);
 $date = getCurrentDate();
 $password = securePassword($password);
 /* create a prepared statement */
-/*
+
 $sql = 'INSERT INTO ' . $tbl_name . ' (
     registrationDate, 
     primaryContact, 
@@ -83,20 +83,20 @@ $sql = 'INSERT INTO ' . $tbl_name . ' (
     password,
     address
 ) 
-VALUES (?,?,?,?,?,?,?,?,?,?,?,?)';
+VALUES (?,?,?,?,?,?,?,?,?)';
 if ($stmt = $mysqli->prepare($sql)) {
     $stmt->bind_param("sssssisss", $date, $primaryName, $primaryEmail, $primaryPhone, $university, $size, $username, $password, $address);
     $stmt->execute();
     $stmt->close();
 }
 $mysqli->close();
-*/
 
+/*
 $sql = "INSERT INTO `registration2014`  (`primaryContact`, `primaryEmail`, `primaryPhone`, `university`, `size`, `username`, `password`, `id`, `registrationDate`, `amountPaid`, `proofofpayment`, `address`)
 VALUES ('$primaryName','$primaryEmail','$primaryPhone','$university','$size','$username','$password',NULL,'$date','0','0','$address');";
 $add_member = mysql_query($sql, $connection) or trigger_error( mysql_error( $connection ), E_USER_ERROR );
 mysql_close($connection);
-
+*/
 
 // write the email content  
 $email_body = "Primary Contact: ".$primaryName.
@@ -111,13 +111,11 @@ $subject = "[NEW UCBMUN REGISTRATION] ".$university;
 $sg = "sg@ucbmun.org";
 $dsg = "dsg@ucbmun.org";
 $cose = "cos-external@ucbmun.org";
-$ramit = "ramitmalhotra@gmail.com";
 
 // send the email  
 
 mail ($sg, $subject, $email_body, $from);
 mail ($dsg, $subject, $email_body, $from);
 mail ($cose, $subject, $email_body, $from);
-mail ($ramit, $subject, $email_body, $from);
 
 header("Location: registration.php?s=".urlencode("s")); exit;  

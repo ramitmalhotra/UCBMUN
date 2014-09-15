@@ -84,7 +84,7 @@ a:visited {
 }
 
 
-#conference_drop_container {
+#conference_drop_container,#user_drop_container {
 	background: white;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
@@ -106,7 +106,7 @@ a:visited {
 	margin-left: 3px;
 }
 
-#conference_nav {
+#conference_nav,#user_nav {
 	cursor: pointer;
 }
 

@@ -1,6 +1,3 @@
-body{
-	line-height:1.5 !important;
-}
 #committees_page {
 	position: relative;
 	background: #e2e6e9;
@@ -123,17 +120,6 @@ body{
 	font-weight: 300;
 }
 
-#recaptcha_widget_div {
-	margin: 2em 0;
-}
-
-#fields {
-	font-size: 1em;
-	margin-bottom: 15px;
-	font-weight: 300;
-	opacity: 0.5;
-}
-
 .modal_vertical {
 	display: table;
 	width: 100%;
@@ -190,37 +176,19 @@ body{
 	margin-bottom: 0.75em;
 }
 
-#name{
+.label {
 	color: black;
 	/display: inline-block;
 	font-size: 1.2em;
-	margin-bottom: 0.5em;
+	margin-top: 1rem;
 
 }
 
-#email {
-	color: black;
-	/display: inline-block;
-	font-size: 1.2em;
-	width: 200px;
-	margin-bottom: 0.5em;
-}
-#college{
-	color: black;
-	/display: inline-block;
-	font-size: 1.2em;
-	width: 200px;
-	margin-bottom: 0.5em;
-}
-#message{
-	color: black;
-	margin-bottom: 0.5em;
-	font-size: 1.2em;
-	}
 
 #info_header {
 	margin-bottom: 1rem;
 	text-align: center;
+	padding-top: 2rem;
 }
 
 .middle {
@@ -241,58 +209,22 @@ body{
 }
 
 
-.input-box {
+.alert-error {
+	padding: 15px 10PX;
+    background: #f2dede;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    color: #b94a48;
+}
 
-background-color: rgb(255, 255, 255);
-
-
-border-bottom-color: rgb(204, 204, 204);
-border-bottom-left-radius: 4px;
-border-bottom-right-radius: 4px;
-border-bottom-style: solid;
-border-bottom-width: 1px;
-border-left-color: rgb(204, 204, 204);
-border-left-style: solid;
-border-left-width: 1px;
-border-right-color: rgb(204, 204, 204);
-border-right-style: solid;
-border-right-width: 1px;
-border-top-color: rgb(204, 204, 204);
-border-top-left-radius: 4px;
-border-top-right-radius: 4px;
-border-top-style: solid;
-border-top-width: 1px;
-
-
-box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 1px 0px inset;
-color: rgb(85, 85, 85);
-cursor: auto;
-display: inline-block;
-font-size: 13px;
-font-weight: normal;
-height: 20px;
-letter-spacing: normal;
-line-height: 20px;
-margin-bottom: 10px;
-margin-left: 0px;
-margin-right: 0px;
-margin-top: 0px;
-padding-bottom: 4px;
-padding-left: 6px;
-padding-right: 6px;
-padding-top: 4px;
-text-align: start;
-text-indent: 0px;
-text-shadow: none;
-text-transform: none;
-vertical-align: middle;
-width: 40%;
-word-spacing: 0px;
-outline: none;
+.alert-success {  
+	padding: 15px 10PX;
+    background: #dff0d8;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    color: #468847;
 }
 
 #terms_container {
-	margin-top: 0.5em;
+	padding: 1.5rem 0; 
 	cursor: pointer;
 }
 
@@ -302,51 +234,30 @@ li {
 	margin-top: 1rem;
 }
 
+#fields {
+	font-size: 1em;
+	color: #6a7480;
+	padding: 0.5rem 0;
+	font-weight: 500;
+}
+
 #terms_header {
 	font-size: 2em;
 	font-weight: 300;
 	margin: 0 auto;
-	margin-bottom: 0.25em;
-	margin-top: 1rem;
 }
 
 #terms_content {
 	display: none;
 }
 
-#submit-btn {
-	font-family: "Helvetica Neue";
-	color: white;
-	outline: none;
-	border: none;
-	padding: 0.938em 2.25em;
-	font-weight: 700;
-	margin-top: 1em;
-	font-size: 16px;
-	background-color: #2F3855;
-	border-radius: 3px;
-	cursor: pointer;
-}
-
-#sssubmit-btn {
-	padding: 0.938em 2.25em;
-	background: #e9eaed;
-	display: inline-block;
-	-webkit-border-radius: 3px;
-	color: #2F3855;
-	font-weight: 700;
-	margin-top: 2em;
-}
-
 #info_content2 {
 	color: #141823;
 	background: white;
-	padding: 2em;
+	/* padding-top: 2em; */
 	-webkit-border-radius: 3px;
 	border: 1px solid;
 	border-color: #e5e6e9 #dfe0e4 #d0d1d5;
-	height: 30%;
-
 }
 
 #contact-box-content {
@@ -382,6 +293,77 @@ li {
 	height: 5em;
 }
 
+
+.login-input, textarea {
+background-color: rgb(255, 255, 255);
+border-bottom-color: rgb(204, 204, 204);
+border-bottom-left-radius: 4px;
+border-bottom-right-radius: 4px;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-left-color: rgb(204, 204, 204);
+border-left-style: solid;
+border-left-width: 1px;
+border-right-color: rgb(204, 204, 204);
+border-right-style: solid;
+border-right-width: 1px;
+border-top-color: rgb(204, 204, 204);
+border-top-left-radius: 3px;
+border-top-right-radius: 3px;
+border-top-style: solid;
+border-top-width: 1px;
+
+
+box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 1px 0px inset;
+color: rgb(85, 85, 85);
+cursor: auto;
+display: inline-block;
+font-size: 13px;
+font-weight: normal;
+height: 20px;
+letter-spacing: normal;
+
+
+line-height: 20px;
+text-align: start;
+text-indent: 0px;
+text-shadow: none;
+text-transform: none;
+vertical-align: middle;
+
+
+width: 40%;
+word-spacing: 0px;
+
+outline: none;
+
+    border: none;
+    outline: none;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+    margin: 0.5rem 0;
+    font-size: 18px;
+    padding: 10px 2.5% 10px 2.5%;
+    transition: linear 0.2s;
+    -webkit-transition: linear 0.2s;
+    -moz-transition: linear 0.2s;
+    width: 95%;
+    color: rgba(74, 74, 74, 0.75);
+    background: transparent;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 1px 0px inset;
+   }
+   
+
+.login-input-error {
+	border-bottom-color: #de6868;
+}
+.login-input:hover, textarea:hover {
+    border-bottom-color: rgba(0, 0, 0, 0.25);
+}
+.login-input:focus, textarea:focus {
+    border-bottom-color: #6a7480;
+}
+
+
 .description_table {
     display: table;
 
@@ -409,15 +391,53 @@ li {
  	font-size: 1.1em;
  	margin-top: 0.3rem;
  }
- 
-.iconCheck {
-	opacity: 0;
+
+ #recaptcha_area, #recaptcha_table {
+ 	margin: 0 auto;
+ }
+
+ #form_content {
+ 	padding: 0 2rem;
+ 	padding-bottom: 2rem;
+ }
+
+#submit-btn {
+	background: #2F3855;
+	margin: 0;          
+	border-bottom-left-radius: 3px;     text-align: center;     padding: 15px 0px;     transition: linear 0.2s;     -webkit-transition: linear 0.2s;     -moz-transition: linear 0.2s;     cursor: pointer;     border: none;     
+	width: 100%;
+	/* float: left; */     color: white;     font-size: 16px;     
+	font-weight: 600;     line-height: 32px;     
+	/* margin-left: 10px; */
+	outline: none;
+	border: none;
+	border-bottom-right-radius: 3px;
 }
 
+div#recaptcha_area{
+	margin: 0 auto;
+}
 
-
-
-
+[class^="icon-"]{
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	margin-top: 1px;
+	line-height: 14px;
+	vertical-align: text-top;
+	background-image: url("../img/glyphicons-halflings.png");
+	background-position: 14px 14px;
+	background-repeat: no-repeat;
+}
+.iconCheck{
+	opacity:0;
+}
+.icon-ok {
+	background-position: -288px 0;
+}
+.icon-remove{
+	background-position: -312px 0;
+}
 
 
 

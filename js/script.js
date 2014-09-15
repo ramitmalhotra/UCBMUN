@@ -70,12 +70,21 @@ $(document).ready(function() {
 				$('#conference_drop_container').show();
 			}
 		});
+		
+		$('#user_nav').click(function() {
+			  event.stopPropagation();
+			if ($('#user_drop_container').is(':visible')) {
+				$('#user_drop_container').hide();
+			} else {
+				$('#user_drop_container').show();
+			}
+		});
 
 
 		$('body').click(function() {
 
 				$('#conference_drop_container').hide();
-		
+				$('#user_drop_container').hide();
 		});
 		
 		$('.event_container').click(function() {
@@ -126,4 +135,13 @@ $(document).ready(function() {
 			id = '#' + id;
 			$(id).show();	
 		});
+		
+		var path = $(location).attr("pathname");
+		var pageName = path.substr(path.lastIndexOf('/')+1);
+		var currentTag = $("a[onclick*='"+pageName+"']");
+		currentTag.removeAttr('onclick');
+		currentTag.removeAttr('target');
+		var currentDiv ="#"+$("#sponsors_nav").next().attr("id");
+		currentTag.attr("href",currentDiv);
+		currentTag.addClass("smoothScroll");
 });

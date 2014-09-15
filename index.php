@@ -121,6 +121,15 @@
                                     Contact
                                 </div>
                             </a>
+                            <?php 
+                            	if(isset($_SESSION['username'])){
+								echo '<a target="_blank" onclick="javascript:document.location.href=\'logout.php\'">
+	                                <div class = "landing_nav_item">
+	                                    Logout
+	                                </div>
+                            	</a>';
+							}			
+                            ?>
                         </div>
                         <div class = "clear">
                         </div>

@@ -1,0 +1,60 @@
+body, html {
+	background: #e9eaed !important;
+}
+
+#uni_header {
+	text-align: center;
+	font-weight: 300;
+	line-height: 1.75em;
+	font-size: 3.5em;
+}
+
+#subheader {
+	font-size: 2em;
+	font-weight: 300;
+	text-align: left;
+	-webkit-font-smoothing: antialiased;
+}
+
+.desc {
+	font-weight: 300;
+}
+
+#info_content_container {
+	margin: 0 auto;
+		margin-bottom: 3rem;
+}
+
+#info_header {
+	text-align: center;
+	margin-bottom: 1rem;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+
+.changewidth {
+	width: 80% !important;
+	margin-bottom: 3rem;
+}
+
+td {
+    padding-top: .5em;
+    padding-right: 1rem;
+    padding-bottom: .5em;
+}
+
+#tab4 {
+	font-weight: 300;
+	font-size: 0.95em;
+	line-height: 1.5em;
+}
+
+#info_header {
+	font-size: 3.5em;
+	font-weight: 300;
+	margin: 0 auto;
+	margin-bottom: 0.5em;
+}
