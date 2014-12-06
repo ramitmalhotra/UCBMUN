@@ -1,6 +1,7 @@
 #committees_page {
 	position: relative;
 	background: #e2e6e9;
+	height: auto !important;
 }
 
 #committeespg_content {

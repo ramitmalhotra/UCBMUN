@@ -1,5 +1,5 @@
-<?php  
-	session_start();
+<?php  	
+	$return = array();
 	require_once('recaptchalib.php');
 	$privatekey = "6LcW--MSAAAAAEdmWws1tFkIODHtGV5-8PMfW0_J";
 	$resp = recaptcha_check_answer ($privatekey,
@@ -11,10 +11,12 @@
 	//}
 	if (!$resp->is_valid) {
 		$error = "The CAPTCHA was not entered correctly. Please try again";
-		header("Location: contact.php?e=".urlencode($error));
+		$return['e'] = $error;
+		echo json_encode($return);
+		//header("Location: contact.php?e=".urlencode($error));
 		exit;  
-	} else {
-
+	}
+	session_start();
 	// Your code here to handle a successful verification
 	// check for form submission - if it doesn't exist then send back to contact form  
 	  
@@ -44,7 +46,10 @@
 	}*/
 	// check if an error was found - if there was, send the user back to the form  
 	if (isset($error)) {  
-	    header("Location: contact.php?e=".urlencode($error)); exit;  
+		$return['e'] = $error;
+		echo json_encode($return);
+	    //header("Location: contact.php?e=".urlencode($error)); 
+	    exit;  
 	}  
          
 	// write the email content  
@@ -60,8 +65,10 @@
 	mail ($test,$subject,$email_body,$from);
 
 	      
-	// send the user back to the form  
-	header("Location: contact.php?s=".urlencode("Thank you for your message, ".$name.". We will get back to you ASAP!")); exit;
-	}
+	// send the user back to the form
+	$return['s'] = "Thank you for your message, ".$name.". We will get back to you ASAP!";
+	echo json_encode($return);  
+	//header("Location: contact.php?s=".urlencode("Thank you for your message, ".$name.". We will get back to you ASAP!")); 
+	exit;	
   
 ?>  

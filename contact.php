@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="css/committee_pages.css">
         <link rel="stylesheet" href="css/home.css">
         <link rel="stylesheet" href="css/contact.css">
+        <link rel="stylesheet" href="css/jquery-ui.min.css">
+        <link rel="stylesheet" href="css/jquery-ui.theme.min.css">
         <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
         <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
@@ -85,6 +87,23 @@
                                     </div>
                                 </div>
                             </a>
+                            <a href="mailto:dbr@ucbmun.org">
+                                <div id="third-section-2" class = "section">
+                                    <div class = "contact_picture_container">
+                                         <img src="assets/sec/Sarah 2.jpg" class="profile">
+                                    </div>
+                                    <div class="description"> 
+                                        <div class = "description_table">
+                                            <div class = "description_container">
+                                                Business Relations
+                                                <div class="subdescription">
+                                              Sarah Dessouki
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
                             <a href="mailto:cos-external@ucbmun.org">
                                 <div id="fourth-section" class = "section">
                                     <div class = "contact_picture_container">
@@ -95,7 +114,7 @@
                                             <div class = "description_container">
                                                 Chief of Staff
                                                 <div class="subdescription">
-                                                 Varsha Vekatasubramaniam
+                                                 Varsha Venkatasubramaniam
                                                 </div>
                                             </div>
                                         </div>
@@ -106,27 +125,18 @@
                     </div>
                     <div id = "info_content_container">
                         <div id = "info_content2">
-                        <?php  
-        					// check for a successful form post  
-        					if (isset($_GET['s'])) {
-        						echo "<div class=\"alert-success\">".$_GET['s']."</div>";  
-        					}
-        					// check for a form error  
-        					elseif (isset($_GET['e'])) {
-            					echo "<div class=\"alert-error\">".$_GET['e']."</div>";
-     						   } 
-        				?>
-                                               
+                        	<div id="alertDiv" style="display:none;">
+                        	</div>                                                                       
                             <div id = "info_header">
                                 Contact Form
                             </div>
                             <div id = "info_text">   
-                               <form action="verifyLogin.php" method="post">
+                               <form id="contactForm">
                                         <div id = "form_elements">
                                         <div id="name">Name </div><input type="text" id="contact_name" name="contact_name" class="input-box"><br>
                                         <div id="email">Email </div> <input type="email" id="contact_email" name="contact_email" class="input-box"><br>
                                         <div id="college">College/University </div> <input type="text" id="contact_school" name="contact_school" class="input-box"><br>
-                                        <div id="message">Message </div> <textarea id="contact_message" name="contact_message"></textarea><br>
+                                        <div id="message">Message </div> <textarea id="contact_message" name="contact_message" title="Please write your query in detail to allow us to answer you quickly and efficiently"></textarea><br>
                                         <script type="text/javascript">
                                         var RecaptchaOptions = {
                                             theme : 'blackglass'
@@ -151,5 +161,54 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src= "js/jquery-blockui.js"></script>
+        <script type="text/javascript" src= "js/jquery-ui.min.js"></script>
+        <script type="text/javascript">
+        	$(document).ready(function () {
+        		var tooltips = $( "[title]" ).tooltip({
+  	  		      position: {
+  	  		        my: "left top",
+  	  		        at: "right+5 top-5"
+  	  		      }
+  	  		    });
+        		$("#contactForm").submit(function(e) {		          
+  	              var empties = $('input').filter(function () {
+  	              return ($.trim($(this).val()) == '');
+  	              });
+  	              if (empties.length > 0) {
+  	                alert("Please fill out all the fields! ");
+  	                return false;
+  	              }  	                	                	               
+  	            $.blockUI({ message: '<h1><img src="assets/spinner.gif" /> Just a moment...</h1>' });
+        		$.ajax({
+                    type: 'POST',
+                    url: 'verifyLogin.php',
+                    data: $(this).serialize(),
+                    dataType: 'json',
+                    success: function (data) {
+                            console.log(data);
+                            if(data['s']){
+                              $("#alertDiv").removeClass("alert-error").addClass("alert-success").html("<i class = \"fa fa-info-circle info\"></i> "+data['s']).show();                          	  	                                                                                                  
+                            	//$("#info_content2").html("<div class=\"alert-success\"><i class = \"fa fa-info-circle info\"></i> Thank you for registering for UCBMUN XIX. We look forward to seeing you in February.</div>");
+                            	}
+                            else if(data['e']){
+                          	  $("#alertDiv").removeClass("alert-success").addClass("alert-error").html("<i class = \"fa fa-exclamation-triangle info\"></i> "+data['e']).show();
+                          	 // $("#info_content2").prepend("<div class=\"alert-error\" style=\"text-align:center\"><i class = \"fa fa-info-circle info\"></i>"+" "+data['e']+"</div>");
+                          	  $("#recaptcha_reload").click();
+                            }
+                            $.unblockUI();
+                            $("html, body").animate({ scrollTop: 0 }, "slow");
+                            setTimeout(function(){
+									$("#alertDiv").fadeOut("slow");
+									if(data['s'])
+									window.location.href="index.php"
+                            },5000);                                                                                           
+                    }
+            		});
+	              e.preventDefault();
+        		});
+        	});	
+        </script>
+        <?php include 'footer.php';?>
     </body>
 </html>

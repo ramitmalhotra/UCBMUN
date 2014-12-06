@@ -6,6 +6,15 @@
 	text-align: center;
 }
 
+.alert-error {
+	padding: 15px 10PX;
+    background: #f2dede;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    color: #b94a48;    
+    line-height: 1.5;
+	font-weight: 500;
+}
+
 body, html {
 	background: #e9eaed !important;
 }
@@ -66,7 +75,7 @@ form {
 	margin: 0 !important;
 }
 
-button {
+button,input[type="submit"] {
 	background: #2F3855;
 	margin: 0;          
 	border-bottom-left-radius: 3px;     text-align: center;     padding: 15px 0px;     transition: linear 0.2s;     -webkit-transition: linear 0.2s;     -moz-transition: linear 0.2s;     cursor: pointer;     border: none;     

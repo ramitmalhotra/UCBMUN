@@ -123,11 +123,25 @@
                             </a>
                             <?php 
                             	if(isset($_SESSION['username'])){
-								echo '<a target="_blank" onclick="javascript:document.location.href=\'logout.php\'">
-	                                <div class = "landing_nav_item">
-	                                    Logout
-	                                </div>
-                            	</a>';
+								echo '<div class = "landing_nav_item" id = "user_nav">
+                                <div id = "user_drop_container">
+                                    <a target = "_blank" onclick= "javascript:document.location.href=\'delegationHome.php\'">
+                                        <div class = "drop_item_container">
+                                            <div class = "drop_item">
+                                                My Home
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a target = "_blank" onclick= "javascript:document.location.href=\'logout.php\'">
+                                        <div class = "drop_item_container">
+                                            <div class = "drop_item">
+                                                Logout
+                                            </div>
+                                        </div>
+                                    </a>                                    
+                                </div>'.$_SESSION['user'].'
+                                 <i class = "fa fa-caret-down caret"></i>
+                            </div>';
 							}			
                             ?>
                         </div>
@@ -144,7 +158,7 @@
                             <img src = "assets/ucbmunlogo.png" class = "img_scaled">
                         </div>
                         <div id = "button_container">
-	                        <!-- <a target = "_blank" onclick= "javascript:document.location.href='registration.php'"></a>-->
+	                        <a target = "_blank" onclick= "javascript:document.location.href='registration.php'">
 	                            <div id = "landing_cover_register">
 	                                 <div id = "register_caption">
 	                                    Register 
@@ -153,20 +167,23 @@
 	                                    <img src = "assets/pen.png" width="35" height="35">
 	                                </div>
 	                            </div>  
-	                                              
-	                        <div id = "landing_cover_login">
-	                             <div id = "login_caption">
-	                                Login 
-	                            </div>
-	                            <div id = "login_icon">
-	                                <img src = "assets/login.png" width="35" height="35">
-	                            </div>
-	                        </div>
+	                        </a>                      
+	                        <a target = "_blank" onclick= "javascript:document.location.href='main_login.php'">
+		                        <div id = "landing_cover_login">
+		                             <div id = "login_caption">
+		                                Login 
+		                            </div>
+		                            <div id = "login_icon">
+		                                <img src = "assets/login.png" width="35" height="35">
+		                            </div>
+		                        </div>
+		                	</a>
                         </div>
                         <div class = "clear">
                         </div>
                         <div id="news_tick">
-                        	Registration opens <br>on September 15th, 2014
+                        	Early Registrations Closed! <br/>
+                        	Regular Registrations now <br>OPEN!
                         </div>                        
                         <div id = "landing_cover_subtitle">
                             UC Berkeley's intercollegiate MUN conference
@@ -293,5 +310,6 @@
         <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
         <script type="text/javascript" src= "js/smoothscroll.js"></script> 
         <script src = "js/script.js"></script>
+        <?php include 'footer.php';?>
     </body>
 </html>

@@ -64,6 +64,7 @@ $(document).ready(function() {
 
 		$('#conference_nav').click(function() {
 			  event.stopPropagation();
+			  $('#user_drop_container').hide();
 			if ($('#conference_drop_container').is(':visible')) {
 				$('#conference_drop_container').hide();
 			} else {
@@ -73,6 +74,7 @@ $(document).ready(function() {
 		
 		$('#user_nav').click(function() {
 			  event.stopPropagation();
+			  $('#conference_drop_container').hide();
 			if ($('#user_drop_container').is(':visible')) {
 				$('#user_drop_container').hide();
 			} else {
@@ -144,4 +146,15 @@ $(document).ready(function() {
 		var currentDiv ="#"+$("#sponsors_nav").next().attr("id");
 		currentTag.attr("href",currentDiv);
 		currentTag.addClass("smoothScroll");
+		
+		$('.tab').click(function() {
+			var id = this.id;
+			id = '.' + id;
+			console.log(id);
+			$('.section').addClass('hidden');
+			$(id).removeClass('hidden');	
+			$('.tab').removeClass('active');
+			$(this).addClass('active');
+		});
+		
 });

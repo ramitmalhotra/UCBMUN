@@ -363,6 +363,8 @@ textarea {
     background: #f2dede;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
     color: #b94a48;
+    line-height: 1.5;
+	font-weight: 500;
 }
 
 .alert-success {  
@@ -370,6 +372,8 @@ textarea {
     background: #dff0d8;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
     color: #468847;
+    line-height: 1.5;
+	font-weight: 500;
 }
 
 .description_container {
@@ -418,6 +422,9 @@ form {
     border-bottom-color: #6a7480;
 }
 
+#recaptcha_area, #recaptcha_table {
+ 	margin: 0 auto;
+}
 
 
 

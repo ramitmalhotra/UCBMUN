@@ -1,4 +1,5 @@
 <?php
+$return = array();
 session_start();
 $host="localhost"; // Host name 
 $user="ucbmunor"; // Mysql username 
@@ -36,7 +37,9 @@ if (mysql_num_rows($result) > 0) {
 	$row = mysql_fetch_array($result, MYSQL_ASSOC);
 	$storedPassword = $row['password'];
 } else {
-	header("location:main_login.php?e=".urlencode("s"));
+	$return['e'] = 'Incorrect Username or Password';
+	echo json_encode($return);
+	//header("location:main_login.php?e=".urlencode("s"));
 	exit;
 }
 // To protect MySQL injection 
@@ -61,8 +64,13 @@ if($count==1){
 	// Register $myusername, $mypassword and redirect to file "delegationHome.php"
 	$_SESSION['username'] = $myusername;
 	$_SESSION['user'] = $user;
-	header("location:delegationHome.php");
+	
+	$return['s'] = "Success";
+	echo json_encode($return);
+	//header("location:delegationHome.php");
 } else {
-	header("location:main_login.php?e=".urlencode("s"));
+	$return['e'] = "Incorrect Username or Password";
+	echo json_encode($return);
+	//header("location:main_login.php?e=".urlencode("s"));
 }
 ?>

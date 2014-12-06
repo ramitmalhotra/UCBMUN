@@ -1,4 +1,5 @@
 <?php
+$return = array();
 require_once('recaptchalib.php');
 	$privatekey = '6Lf-2OYSAAAAABFzFkmP9nfLkPSAYP_nMLHGYKeC';
 	$resp = recaptcha_check_answer ($privatekey,
@@ -8,7 +9,9 @@ require_once('recaptchalib.php');
 
 if (!$resp->is_valid) {
 	$error = "The CAPTCHA was not entered correctly. Please try again";
-	header("Location: registration.php?e=".urlencode($error));
+	$return['e'] = $error;
+	echo json_encode($return);
+	//header("Location: registration.php?e=".urlencode($error));
 	exit;  
 } 
 session_start();
@@ -56,7 +59,10 @@ function checkIfUsernameExists($username, $table) {
 	$result = mysql_query("SELECT 1 FROM $table WHERE username ='$username' LIMIT 1");
 	if(is_resource($result) && mysql_num_rows($result) > 0 ){
 		$error = 'Sorry, that username is already taken.';
-		header("Location: registration.php?e=".urlencode($error)); exit;
+		$return['e'] = $error;
+		echo json_encode($return);
+		//header("Location: registration.php?e=".urlencode($error));
+		exit;
 	}
 	return;
 }
@@ -106,16 +112,37 @@ $email_body = "Primary Contact: ".$primaryName.
 			  "\nDelegation Size: ".$size.
 			  "\nAddress: ".$address;
 
+$email_body_auto = "Hi ".$primaryName.",
+		\nThis e-mail serves as a confirmation of your delegation’s intent to register for UCBMUN XIX. Please ensure the details below are accurate. We will be in touch with you regarding further steps.
+		\n\nWe look forward to seeing you next February!
+		\n\nUCBMUN XIX Secretariat
+		\n\nPrimary Contact: ".$primaryName.
+		"\nPrimary Email: ".$primaryEmail.
+		"\nPrimary Phone: ".$primaryPhone.
+		"\nUsername: ".$username.
+		"\nUniversity: ".$university.
+		"\nDelegation Size: ".$size.
+		"\nAddress: ".$address.
+		"\n\nPlease keep your password safe. You will need to contact technology@ucbmun.org in case you lose it.";
+
+$subject_auto = "UCBMUN REGISTRATION CONFIRMATION - ".$university;
+
 $from = "From: nobody@ucbmun.org";
 $subject = "[NEW UCBMUN REGISTRATION] ".$university;
 $sg = "sg@ucbmun.org";
 $dsg = "dsg@ucbmun.org";
 $cose = "cos-external@ucbmun.org";
 
+
 // send the email  
 
 mail ($sg, $subject, $email_body, $from);
 mail ($dsg, $subject, $email_body, $from);
 mail ($cose, $subject, $email_body, $from);
+mail ($primaryEmail, $subject_auto, $email_body_auto, $from);
 
-header("Location: registration.php?s=".urlencode("s")); exit;  
+
+$return['s'] = 's';
+echo json_encode($return);
+//header("Location: registration.php?s=".urlencode("s")); 
+exit;  
